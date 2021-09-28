@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "344890487968",
+    "project_id": "cartly-72310",
+    "storage_bucket": "cartly-72310.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:344890487968:android:5cac1b8f4184e7887e45c5",
+        "android_client_info": {
+          "package_name": "com.amante.cartly"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "344890487968-skag9nrcfuotiulhuforgs8psvd807of.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.amante.cartly",
+            "certificate_hash": "d5e719438588b0f124e93c76f81462542fe5cdbc"
+          }
+        },
+        {
+          "client_id": "344890487968-6k31scmt19thmbkqsj3toaaavorb2pon.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAd5jFePSWtbuNpnaLojGqfOdpFKhYTJW4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "344890487968-6k31scmt19thmbkqsj3toaaavorb2pon.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
