@@ -61,10 +61,8 @@ class CartlyDrawer extends StatelessWidget {
             title: Text('Fazer logout',
                 style: TextStyle(color: CustomColors.mainColor, fontSize: 16)),
             onTap: () {
-              if (!context.read<AuthController>().isLoading) {
-                context.read<WishListController>().invalidateCatalogs();
-                context.read<AuthController>().signOut();
-              }
+              context.read<WishListController>().invalidateCatalogs();
+              context.read<AuthController>().signOut();
             },
           ),
         ],
