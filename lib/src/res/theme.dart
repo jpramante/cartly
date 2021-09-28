@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cartly/src/res/custom_colors.dart';
 
 final appTheme = ThemeData(
-  primarySwatch: Colors.blue,
+  primarySwatch: Colors.blueGrey,
   textTheme: TextTheme(
     headline1: TextStyle(
       fontFamily: 'Roboto',

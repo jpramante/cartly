@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cartly/src/controllers/wishlist_controller.dart';
 import 'package:cartly/src/models/product_model.dart';
+import 'package:cartly/src/res/custom_colors.dart';
 import 'package:cartly/src/widgets/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -17,15 +18,19 @@ class ProductPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(product.name),
+        backgroundColor: CustomColors.mainColor,
+        title: Text(product.name,
+            style: TextStyle(color: CustomColors.headerTextColor)),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           CachedNetworkImage(
             width: 300,
-            placeholder: (context, url) => const CircularProgressIndicator(),
-            errorWidget: (context, url, error) => const Icon(Icons.error),
+            placeholder: (context, url) =>
+                CircularProgressIndicator(color: CustomColors.accentColor),
+            errorWidget: (context, url, error) =>
+                Icon(Icons.error, color: CustomColors.accentColor),
             imageUrl: product.thumbnail,
           ),
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
@@ -37,7 +42,7 @@ class ProductPage extends StatelessWidget {
                         text: TextSpan(
                           children: <TextSpan>[
                             TextSpan(
-                              text: 'De:R\$$price',
+                              text: 'De:R\$${price.toStringAsFixed(2)}',
                               style: const TextStyle(
                                 color: Colors.grey,
                                 fontSize: 18,
@@ -45,9 +50,9 @@ class ProductPage extends StatelessWidget {
                               ),
                             ),
                             TextSpan(
-                              text: ' Por: R\$$promo',
-                              style: const TextStyle(
-                                color: Colors.black,
+                              text: ' Por: R\$${promo.toStringAsFixed(2)}',
+                              style: TextStyle(
+                                color: Colors.red.shade600,
                                 fontSize: 18,
                               ),
                             ),
@@ -55,7 +60,7 @@ class ProductPage extends StatelessWidget {
                         ),
                       )
                     : Text(
-                        'Preço: R\$$price',
+                        'Preço: R\$${price.toStringAsFixed(2)}',
                         style: const TextStyle(
                           fontSize: 18,
                         ),

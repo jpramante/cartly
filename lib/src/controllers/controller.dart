@@ -6,10 +6,8 @@ abstract class Controller with ChangeNotifier {
   Status _status = Status.initial;
 
   setStatus(Status status) {
-    if (status != _status) {
-      _status = status;
-      notifyListeners();
-    }
+    _status = status;
+    notifyListeners();
   }
 
   bool get isInitial => _status == Status.initial;

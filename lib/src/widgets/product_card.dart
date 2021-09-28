@@ -1,3 +1,4 @@
+import 'package:cartly/src/res/custom_colors.dart';
 import 'package:cartly/src/screens/product_page.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -26,20 +27,21 @@ class ProductCard extends StatelessWidget {
                   text: TextSpan(
                     children: <TextSpan>[
                       TextSpan(
-                        text: 'R\$$price',
+                        text: 'R\$${price.toStringAsFixed(2)}',
                         style: TextStyle(
-                          color: Colors.grey,
+                          color: CustomColors.mainTextColor,
                           decoration: TextDecoration.lineThrough,
                         ),
                       ),
                       TextSpan(
-                        text: ' R\$$promo',
-                        style: TextStyle(color: Colors.black),
+                        text: ' R\$${promo.toStringAsFixed(2)}',
+                        style: TextStyle(color: Colors.red.shade800),
                       ),
                     ],
                   ),
                 )
-              : Text('R\$$price'),
+              : Text('R\$${price.toStringAsFixed(2)}',
+                  style: TextStyle(color: CustomColors.mainTextColor)),
           trailing: FavoriteButton(_product),
           onTap: () {
             Navigator.push(
@@ -52,12 +54,15 @@ class ProductCard extends StatelessWidget {
             );
           },
           leading: ClipRRect(
-            borderRadius: BorderRadius.circular(25.0),
+            borderRadius: BorderRadius.circular(30.0),
             child: CachedNetworkImage(
-              width: 60,
-              height: 60,
-              placeholder: (context, url) => const CircularProgressIndicator(),
-              errorWidget: (context, url, error) => const Icon(Icons.error),
+              width: 55,
+              height: 55,
+              fit: BoxFit.cover,
+              placeholder: (context, url) =>
+                  CircularProgressIndicator(color: CustomColors.accentColor),
+              errorWidget: (context, url, error) =>
+                  Icon(Icons.error, color: CustomColors.accentColor),
               imageUrl: _product.thumbnail,
             ),
           ),

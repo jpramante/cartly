@@ -7,6 +7,7 @@ class Product {
   late String price;
   late String promo;
   late bool favorite = false;
+  bool onPromo = false;
 
   Product(
       {required this.id,
