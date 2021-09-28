@@ -8,9 +8,11 @@ class AuthController extends Controller {
   }
 
   void _signInSilently() async {
-    setStatus(Status.loading);
-    _user = await googleSignIn.signInSilently();
-    if (_user == null) setStatus(Status.success);
+    try {
+      setStatus(Status.loading);
+      _user = await googleSignIn.signInSilently();
+      if (_user == null) setStatus(Status.success);
+    } catch (e) {}
   }
 
   final googleSignIn = GoogleSignIn();
@@ -30,10 +32,10 @@ class AuthController extends Controller {
       );
 
       await FirebaseAuth.instance.signInWithCredential(credential);
-      setStatus(Status.success);
     } catch (e) {
       print(e.toString());
     }
+    setStatus(Status.success);
   }
 
   signOut() async {

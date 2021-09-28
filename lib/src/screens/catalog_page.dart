@@ -1,4 +1,5 @@
 import 'package:cartly/src/controllers/wishlist_controller.dart';
+import 'package:cartly/src/res/custom_colors.dart';
 import 'package:cartly/src/widgets/drawer.dart';
 import 'package:cartly/src/widgets/product_card.dart';
 import 'package:flutter/material.dart';
@@ -17,8 +18,10 @@ class _CatalogPageState extends State<CatalogPage> {
   @override
   void initState() {
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      Provider.of<WishListController>(context, listen: false).setCurrentUser();
       Provider.of<WishListController>(context, listen: false).getCatalogList();
     });
+
     super.initState();
   }
 
@@ -27,7 +30,8 @@ class _CatalogPageState extends State<CatalogPage> {
     return Scaffold(
       drawer: const CartlyDrawer(),
       appBar: AppBar(
-        title: const Text('Catálogo'),
+        title: Text('Catálogo',
+            style: TextStyle(color: CustomColors.headerTextColor)),
         actions: [
           PopupMenuButton<Filter>(
             icon: const Icon(Icons.filter_list),
@@ -73,7 +77,7 @@ class _CatalogPageState extends State<CatalogPage> {
         ],
       ),
       body: Consumer<WishListController>(
-        builder: (context, value, child) => value.products.isNotEmpty
+        builder: (context, value, child) => value.hasSuccess
             ? ListView.builder(
                 itemCount: value.products.length,
                 itemBuilder: (_, index) => ProductCard(

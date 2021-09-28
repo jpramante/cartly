@@ -1,6 +1,5 @@
 import 'package:cartly/src/controllers/auth.dart';
 import 'package:cartly/src/screens/login_screen.dart';
-import 'package:cartly/src/screens/product_page.dart';
 import 'package:cartly/src/screens/search_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';

@@ -1,4 +1,6 @@
 import 'package:cartly/src/controllers/auth.dart';
+import 'package:cartly/src/controllers/wishlist_controller.dart';
+import 'package:cartly/src/res/custom_colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,42 +18,50 @@ class CartlyDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           DrawerHeader(
-            decoration: const BoxDecoration(
-              color: Colors.blue,
+            decoration: BoxDecoration(
+              color: CustomColors.mainColor,
             ),
-            child: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(32.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   FittedBox(
                     child: Padding(
-                      padding: const EdgeInsets.all(16.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: CircleAvatar(
                         radius: 25,
                         backgroundImage: NetworkImage(user.photoURL!),
                       ),
                     ),
                   ),
-                  Text(user.displayName!,
+                  Expanded(
+                    child: Text(
+                      user.displayName!,
+                      textAlign: TextAlign.center,
                       style: GoogleFonts.roboto(
-                          textStyle:
-                              TextStyle(color: Colors.black, fontSize: 16))),
+                        textStyle: TextStyle(
+                            color: CustomColors.headerTextColor, fontSize: 17),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
           ),
           ListTile(
-            title: const Text('Wishlist',
-                style: TextStyle(color: Colors.black, fontSize: 16)),
+            title: Text('Wishlist',
+                style: TextStyle(color: CustomColors.mainColor, fontSize: 16)),
             onTap: () {
               Navigator.pushNamed(context, '/wishlist');
               // Navigator.pop(context);
             },
           ),
           ListTile(
-            title: const Text('Fazer logout',
-                style: TextStyle(color: Colors.black, fontSize: 16)),
+            title: Text('Fazer logout',
+                style: TextStyle(color: CustomColors.mainColor, fontSize: 16)),
             onTap: () {
+              context.read<WishListController>().invalidateCatalogs();
               context.read<AuthController>().signOut();
             },
           ),
